@@ -1,3 +1,1 @@
-# emmacza.github.io
-My website (WIP)
-Hi!!
+My personal website using github pages
