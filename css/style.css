@@ -1,0 +1,67 @@
+/*SIDENAV*/
+
+.sidenav {
+    width: 130px;
+    position: fixed;
+    z-index: 1;
+    top: 70px;
+    left: 10px;
+    background: none;
+    overflow-x: hidden;
+    padding: 8px 0;
+    border-radius: 8px;
+}
+
+.sidenav a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #9f5adf;
+    display: block;
+}
+
+.sidenav a:hover {
+    color: #6b35ad;
+}
+
+/*TITLE*/
+
+.title {
+    position: fixed;
+    top: 20px;
+    left: 10px;
+    background: none;
+    overflow-x: hidden;
+    padding: 8px 0;
+    border-radius: 8px;
+}
+
+.title h1 {
+    padding: 6px 8px 6px 16px;
+    margin-top: 0em;
+    text-decoration: none;
+    font-size: 40px;
+    color: #9f5adf;
+    display: block;
+}
+
+/* MAIN*/
+
+.main {
+    margin-left: 280px;
+    margin-top: 100px;
+    /* Same width as the sidebar + left position in px */
+    font-size: 14px;
+    /* Increased text to enable scrolling */
+    padding: 0px 10px;
+}
+
+@media screen and (max-height: 450px) {
+    .sidenav {
+        padding-top: 15px;
+    }
+
+    .sidenav a {
+        font-size: 18px;
+    }
+}
