@@ -1,29 +1,210 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>emmacza</title>
-    <link rel="stylesheet" href=".//css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projects — Emma Cza</title>
+  <meta name="description" content="Personal, academic, technical, and creative projects.">
+  <link rel="stylesheet" href="css/style.css">
 </head>
-
 <body>
-    <div class="title">
-        <h1>emma czanner</h1>
-    </div>
-    <main>
-        <div class="sidenav">
-             <a href="/index.html">home</a>
-            <a href="/projects.html">projects</a>
-            <a href="https://emmaczanner.substack.com">blog</a>
-            <a href="/contact.html">contact</a>
-            <a href="/cv.html">cv</a>
-        </div>
-        <div class="main">
-            <p>Coming soon!</p>
-        </div>
-    </main>
-    <script src="./js/index.js"></script>
-</body>
 
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="site-header-inner">
+      <a class="wordmark" href="index.html">Emma Cza<span class="wordmark-dot">.</span></a>
+      <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="primary-navigation">Menu</button>
+      <nav class="main-nav" aria-label="Primary" id="primary-navigation" data-nav-menu>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="projects.html" aria-current="page">Projects</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="essays.html">Essays</a></li>
+          <li><a href="cv.html">CV</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <section class="container section-tight">
+      <p class="hero-eyebrow">Projects</p>
+      <h1>Things I've built</h1>
+      <p class="text-soft" style="max-width: 38rem;">
+        A mix of personal, academic, technical, and creative projects —
+        some finished, some very much not. "Status" is honest: things
+        marked archived aren't maintained anymore, but I've kept them up
+        because I still like them.
+      </p>
+    </section>
+
+    <!-- ==========================================================================
+         HOW TO ADD A NEW PROJECT
+         ==========================================================================
+         Copy one whole <article class="card"> block (including the opening
+         and closing <article> tags) and paste it inside the <div class="grid
+         grid-3"> below. Then edit:
+
+           - the <h3> title
+           - the <span class="stamp ..."> status. Use one of:
+               stamp-active     (currently maintained / in use)
+               stamp-progress   (still being built)
+               stamp-archived   (finished or no longer maintained)
+           - the description paragraph
+           - the <li class="tag"> items (technologies or topics — add or
+             remove as many <li> as you need)
+           - the links in .card-links — use whichever of these apply, and
+             delete the ones that don't:
+               <a href="YOUR GITHUB URL">Code</a>
+               <a href="YOUR LIVE DEMO URL">Live demo</a>
+               <a href="YOUR WRITE-UP URL">Write-up</a>
+
+         There's no limit to how many project cards you can add — the grid
+         will wrap onto new rows automatically.
+         ========================================================================== -->
+    <section class="container section">
+      <div class="grid grid-3">
+
+        <!-- EXAMPLE PROJECT 1 -->
+        <article class="card">
+          <div class="card-header">
+            <h3>Tidepool</h3>
+            <span class="stamp stamp-progress">In progress</span>
+          </div>
+          <p>
+            A minimal journaling app that only lets you write one paragraph
+            a day, saved locally in the browser. Built to fight my own habit
+            of over-editing everything I write.
+          </p>
+          <ul class="tag-list">
+            <li class="tag">JavaScript</li>
+            <li class="tag">Local Storage</li>
+            <li class="tag">CSS</li>
+          </ul>
+          <div class="card-links">
+            <a href="https://github.com/YOUR-GITHUB-USERNAME/tidepool">Code</a>
+            <a href="#">Live demo</a>
+          </div>
+        </article>
+
+        <!-- EXAMPLE PROJECT 2 -->
+        <article class="card">
+          <div class="card-header">
+            <h3>Field Notes</h3>
+            <span class="stamp stamp-active">Active</span>
+          </div>
+          <p>
+            A growing archive of short observations from walks around my
+            neighbourhood, sorted by season and tagged loosely by subject.
+          </p>
+          <ul class="tag-list">
+            <li class="tag">Writing</li>
+            <li class="tag">Photography</li>
+          </ul>
+          <div class="card-links">
+            <a href="#">Write-up</a>
+          </div>
+        </article>
+
+        <!-- EXAMPLE PROJECT 3 -->
+        <article class="card">
+          <div class="card-header">
+            <h3>Library Card Catalog</h3>
+            <span class="stamp stamp-archived">Archived</span>
+          </div>
+          <p>
+            A school research project that turned into a small database of
+            every book I read in 2024, styled after an old library card
+            catalog.
+          </p>
+          <ul class="tag-list">
+            <li class="tag">Python</li>
+            <li class="tag">SQLite</li>
+            <li class="tag">Data</li>
+          </ul>
+          <div class="card-links">
+            <a href="https://github.com/YOUR-GITHUB-USERNAME/card-catalog">Code</a>
+          </div>
+        </article>
+
+        <!-- EXAMPLE PROJECT 4 -->
+        <article class="card">
+          <div class="card-header">
+            <h3>Zine: "Small Rooms"</h3>
+            <span class="stamp stamp-archived">Archived</span>
+          </div>
+          <p>
+            A short, self-published zine of essays and drawings about
+            dorm rooms, bedrooms, and the objects people keep in them.
+          </p>
+          <ul class="tag-list">
+            <li class="tag">Writing</li>
+            <li class="tag">Illustration</li>
+            <li class="tag">Print</li>
+          </ul>
+          <div class="card-links">
+            <a href="#">Write-up</a>
+          </div>
+        </article>
+
+        <!-- EXAMPLE PROJECT 5 -->
+        <article class="card">
+          <div class="card-header">
+            <h3>Research: Sleep &amp; Study Habits</h3>
+            <span class="stamp stamp-archived">Archived</span>
+          </div>
+          <p>
+            A short independent research project surveying classmates
+            about sleep schedules and self-reported study effectiveness.
+          </p>
+          <ul class="tag-list">
+            <li class="tag">Research</li>
+            <li class="tag">Surveys</li>
+          </ul>
+          <div class="card-links">
+            <a href="#">Write-up</a>
+          </div>
+        </article>
+
+        <!-- EXAMPLE PROJECT 6 -->
+        <article class="card">
+          <div class="card-header">
+            <h3>This Website</h3>
+            <span class="stamp stamp-active">Active</span>
+          </div>
+          <p>
+            You're looking at it. Hand-built with plain HTML, CSS, and
+            JavaScript, hosted on GitHub Pages, and updated whenever I
+            feel like it.
+          </p>
+          <ul class="tag-list">
+            <li class="tag">HTML</li>
+            <li class="tag">CSS</li>
+            <li class="tag">JavaScript</li>
+          </ul>
+          <div class="card-links">
+            <a href="https://github.com/YOUR-GITHUB-USERNAME/YOUR-GITHUB-USERNAME.github.io">Code</a>
+          </div>
+        </article>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p class="mb-0">© <span id="current-year"></span> YOUR NAME. Built by hand with HTML, CSS &amp; JS.</p>
+      <ul class="footer-links">
+        <li><a href="https://github.com/YOUR-GITHUB-USERNAME">GitHub</a></li>
+        <li><a href="https://www.linkedin.com/in/YOUR-LINKEDIN-USERNAME">LinkedIn</a></li>
+        <li><a href="mailto:YOUR-EMAIL@example.com">Email</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
 </html>

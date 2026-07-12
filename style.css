@@ -1,0 +1,1090 @@
+/* ==========================================================================
+   EMMA CZA — SITE STYLESHEET
+   ==========================================================================
+
+   HOW THIS FILE IS ORGANISED
+   1. Design tokens (CSS custom properties) — change these to restyle the
+      whole site without touching anything else.
+   2. Reset & base element styles
+   3. Layout helpers (containers, grids)
+   4. Header & navigation
+   5. Buttons, tags, "stamp" badges
+   6. Cards (projects / posts / essays)
+   7. Long-form writing ("prose")
+   8. Page-specific bits (hero, currently, timeline, CV, contact form)
+   9. Footer
+   10. Utilities
+   11. Reduced motion & print styles
+
+   If you only read one comment block in this whole file, read section 1.
+   ========================================================================== */
+
+
+/* ==========================================================================
+   1. DESIGN TOKENS
+   ==========================================================================
+   Everything below is a variable. Change a value here and it updates
+   everywhere that variable is used across every page.
+
+   COLOUR: the site uses a muted, "dusty" palette on purpose — avoid bright,
+   saturated colours if you add more. --color-accent is the main personality
+   colour of the site (currently a dusty purple).
+
+   TYPE: three font "roles" — display (headings), body (paragraphs),
+   mono (dates, tags, labels — gives the site its library-card / old
+   computer feel). All three default to free system fonts, so the site
+   works with zero external requests. See the optional Google Fonts note
+   below if you want to swap them.
+   ========================================================================== */
+
+:root {
+  /* ---- Colour: base surfaces ------------------------------------------ */
+  --color-bg: #faf6f0;            /* main page background — warm off-white */
+  --color-bg-alt: #f1ebe1;        /* slightly deeper "paper" background, used for panels */
+  --color-bg-card: #fdfaf5;       /* card background, close to white but warm */
+  --color-surface-line: #ddd2c2;  /* borders, dividers, table rules */
+
+  /* ---- Colour: text ------------------------------------------------------ */
+  --color-text: #2c2730;          /* primary text — near-black with a purple cast */
+  --color-text-soft: #5b5460;     /* secondary text, captions, meta */
+  --color-text-faint: #8a8290;    /* placeholders, disabled, faint labels */
+
+  /* ---- Colour: accents ---------------------------------------------------
+     --color-accent is THE colour of this site. Change it here and things
+     like links, the wordmark, buttons and highlights all update together. */
+  --color-accent: #7d6a94;        /* dusty / muted purple — the main accent */
+  --color-accent-dark: #5f4f73;   /* darker shade, used for hover & text-on-light */
+  --color-accent-soft: #e6def0;   /* pale wash of the accent, for backgrounds */
+
+  --color-pink: #e6c9c6;          /* faded pink — secondary accent */
+  --color-blue: #b7c4d1;          /* muted blue — secondary accent */
+  --color-sage: #c3cdb8;          /* muted sage green — secondary accent */
+
+  /* ---- Colour: semantic -------------------------------------------------- */
+  --color-link: var(--color-accent-dark);
+  --color-link-visited: #7a6188;
+  --color-focus: #4a3f57;         /* focus ring colour — kept dark enough for contrast */
+
+  /* ---- Typography ---------------------------------------------------------
+     All system-font stacks by default: no external requests, loads instantly,
+     looks native on every device. See the note further down if you'd rather
+     use a Google Font for the display face. */
+  --font-display: Georgia, "Iowan Old Style", "Palatino Linotype", Palatino, serif;
+  --font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: "Courier New", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.15rem;
+  --text-xl: 1.4rem;
+  --text-2xl: 1.9rem;
+  --text-3xl: 2.6rem;
+
+  --leading-tight: 1.2;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.75;
+
+  /* ---- Spacing scale ------------------------------------------------------
+     Used for margin/padding/gap so spacing stays consistent everywhere. */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4.5rem;
+
+  /* ---- Layout -------------------------------------------------------------- */
+  --width-content: 44rem;   /* comfortable reading width for prose */
+  --width-wide: 68rem;      /* wider width for grids of cards */
+  --radius-sm: 3px;
+  --radius-md: 6px;
+
+  /* ---- Shadows & borders ---------------------------------------------------- */
+  --shadow-card: 0 1px 0 rgba(44, 39, 48, 0.05), 0 6px 16px -10px rgba(44, 39, 48, 0.25);
+  --shadow-lift: 0 10px 24px -12px rgba(44, 39, 48, 0.35);
+  --border-thin: 1px solid var(--color-surface-line);
+  --border-dashed: 1px dashed var(--color-surface-line);
+
+  /* ---- Motion --------------------------------------------------------------- */
+  --transition-fast: 120ms ease;
+  --transition-normal: 200ms ease;
+}
+
+/*
+  OPTIONAL — Google Fonts
+  ------------------------
+  If you'd like a slightly more distinctive display face than the system
+  serif above, you can opt into a free Google Font. To do this:
+
+    1. Add this line near the top of the <head> in every HTML file:
+       <link rel="preconnect" href="https://fonts.googleapis.com">
+       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+       <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&display=swap" rel="stylesheet">
+    2. Change --font-display above to: "Fraunces", Georgia, serif;
+
+  This is entirely optional. The site looks complete and loads faster with
+  system fonts only, so only do this if you want the extra personality —
+  and remember it adds an external network request on every page load.
+*/
+
+
+/* ==========================================================================
+   2. RESET & BASE ELEMENT STYLES
+   ========================================================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background-color: var(--color-bg);
+  /* A very subtle paper-grain texture using layered radial gradients —
+     intentionally faint. Remove the background-image line for a flat colour. */
+  background-image:
+    radial-gradient(rgba(44, 39, 48, 0.02) 1px, transparent 1px);
+  background-size: 3px 3px;
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  line-height: var(--leading-normal);
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  line-height: var(--leading-tight);
+  margin: 0 0 var(--space-3);
+  font-weight: 600;
+}
+
+h1 { font-size: var(--text-3xl); }
+h2 { font-size: var(--text-2xl); }
+h3 { font-size: var(--text-xl); }
+h4 { font-size: var(--text-lg); }
+
+p {
+  margin: 0 0 var(--space-4);
+}
+
+a {
+  color: var(--color-link);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+  transition: color var(--transition-fast);
+}
+
+a:visited {
+  color: var(--color-link-visited);
+}
+
+a:hover {
+  color: var(--color-accent-dark);
+}
+
+/* Consistent, visible focus states everywhere — required for keyboard users */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+[tabindex]:focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+ul, ol {
+  padding-left: 1.25em;
+}
+
+blockquote {
+  margin: var(--space-5) 0;
+  padding: var(--space-1) var(--space-5);
+  border-left: 3px solid var(--color-accent);
+  color: var(--color-text-soft);
+  font-style: italic;
+}
+
+hr {
+  border: none;
+  border-top: var(--border-dashed);
+  margin: var(--space-6) 0;
+}
+
+code, pre {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+}
+
+
+/* ==========================================================================
+   3. LAYOUT HELPERS
+   ========================================================================== */
+
+.container {
+  width: 100%;
+  max-width: var(--width-wide);
+  margin-inline: auto;
+  padding-inline: var(--space-5);
+}
+
+/* Narrower container specifically for text you want to stay readable —
+   used on about/contact/prose pages */
+.container-narrow {
+  width: 100%;
+  max-width: var(--width-content);
+  margin-inline: auto;
+  padding-inline: var(--space-5);
+}
+
+.section {
+  padding-block: var(--space-7);
+}
+
+.section-tight {
+  padding-block: var(--space-5);
+}
+
+.section-alt {
+  background-color: var(--color-bg-alt);
+  border-top: var(--border-thin);
+  border-bottom: var(--border-thin);
+}
+
+.grid {
+  display: grid;
+  gap: var(--space-5);
+}
+
+.grid-2 {
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+}
+
+.grid-3 {
+  grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+}
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.section-heading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-5);
+  border-bottom: var(--border-dashed);
+  padding-bottom: var(--space-3);
+}
+
+.section-heading h2 {
+  margin: 0;
+}
+
+.section-heading .see-all {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  white-space: nowrap;
+}
+
+
+/* ==========================================================================
+   4. HEADER & NAVIGATION
+   ========================================================================== */
+
+.site-header {
+  border-bottom: var(--border-thin);
+  background-color: var(--color-bg);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.site-header-inner {
+  max-width: var(--width-wide);
+  margin-inline: auto;
+  padding: var(--space-4) var(--space-5);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+
+/* The wordmark / site title. Replace "Emma Cza" throughout the site with
+   your own name, or a short nickname/handle you like. */
+.wordmark {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--text-xl);
+  color: var(--color-text);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.35em;
+}
+
+.wordmark:hover {
+  color: var(--color-accent-dark);
+}
+
+.wordmark .wordmark-dot {
+  color: var(--color-accent);
+}
+
+.main-nav {
+  display: flex;
+  align-items: center;
+}
+
+.main-nav ul {
+  list-style: none;
+  display: flex;
+  gap: var(--space-5);
+  margin: 0;
+  padding: 0;
+}
+
+.main-nav a {
+  text-decoration: none;
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  letter-spacing: 0.02em;
+  color: var(--color-text-soft);
+  padding: var(--space-2) 0;
+  border-bottom: 2px solid transparent;
+}
+
+.main-nav a:hover {
+  color: var(--color-text);
+  border-bottom-color: var(--color-accent-soft);
+}
+
+/* Current page indicator — do not rely on colour alone, so we also change
+   the border style and add an accessible marker. Applied via aria-current. */
+.main-nav a[aria-current="page"] {
+  color: var(--color-accent-dark);
+  border-bottom-color: var(--color-accent);
+  font-weight: 700;
+}
+
+/* Mobile nav toggle button — hidden on wide screens */
+.nav-toggle {
+  display: none;
+  background: none;
+  border: var(--border-thin);
+  border-radius: var(--radius-sm);
+  padding: var(--space-2) var(--space-3);
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  color: var(--color-text);
+  cursor: pointer;
+}
+
+.nav-toggle:hover {
+  background-color: var(--color-bg-alt);
+}
+
+@media (max-width: 46rem) {
+  .nav-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+  }
+
+  .main-nav {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: var(--color-bg);
+    border-bottom: var(--border-thin);
+    box-shadow: var(--shadow-card);
+  }
+
+  .main-nav ul {
+    flex-direction: column;
+    gap: 0;
+    padding: var(--space-2) var(--space-5) var(--space-4);
+  }
+
+  .main-nav a {
+    display: block;
+    padding: var(--space-3) 0;
+  }
+
+  /* JS toggles this class on/off. Site remains usable without JS because
+     the nav is not hidden by default in the no-JS case — see main.js
+     comments and the .js-enabled rule below. */
+  .main-nav[data-open="false"] {
+    display: none;
+  }
+}
+
+/* Only hide the mobile nav via JS if JS actually ran. This keeps navigation
+   fully usable (all links visible, stacked) if JavaScript is disabled. */
+.js-enabled .main-nav[data-open="false"] {
+  display: none;
+}
+
+
+/* ==========================================================================
+   5. BUTTONS, TAGS, "STAMP" BADGES
+   ========================================================================== */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  text-decoration: none;
+  padding: var(--space-3) var(--space-5);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-accent-dark);
+  color: var(--color-accent-dark);
+  background-color: transparent;
+  cursor: pointer;
+  transition: background-color var(--transition-fast), color var(--transition-fast), transform var(--transition-fast);
+}
+
+.btn:hover {
+  background-color: var(--color-accent-dark);
+  color: var(--color-bg-card);
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.btn-primary {
+  background-color: var(--color-accent);
+  border-color: var(--color-accent);
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background-color: var(--color-accent-dark);
+  border-color: var(--color-accent-dark);
+}
+
+.btn-small {
+  padding: var(--space-1) var(--space-3);
+  font-size: var(--text-xs);
+}
+
+/* Tags — used for project technologies, blog/essay topics */
+.tag-list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  padding: 0;
+  margin: var(--space-2) 0 0;
+}
+
+.tag {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 0.2em 0.6em;
+  border: 1px solid var(--color-surface-line);
+  border-radius: 999px;
+  background-color: var(--color-bg-alt);
+  color: var(--color-text-soft);
+}
+
+/* "Stamp" badge — a small nostalgic touch used for project/post status,
+   e.g. "IN PROGRESS", "ARCHIVED". Rotated slightly like a rubber stamp. */
+.stamp {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 0.25em 0.6em;
+  border: 1.5px solid currentColor;
+  border-radius: var(--radius-sm);
+  transform: rotate(-2deg);
+  color: var(--color-accent-dark);
+}
+
+.stamp-active { color: #4f7a5a; }      /* muted green-ish, still legible on the palette */
+.stamp-progress { color: var(--color-accent-dark); }
+.stamp-archived { color: var(--color-text-faint); }
+
+/* Small date-stamp style, used next to blog/essay dates */
+.date-stamp {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--color-text-faint);
+  letter-spacing: 0.03em;
+}
+
+
+/* ==========================================================================
+   6. CARDS (projects / posts / essays)
+   ========================================================================== */
+
+.card {
+  background-color: var(--color-bg-card);
+  border: var(--border-thin);
+  border-radius: var(--radius-md);
+  padding: var(--space-5);
+  box-shadow: var(--shadow-card);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lift);
+}
+
+.card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+.card h3 {
+  margin: 0;
+}
+
+.card p {
+  margin: 0;
+  color: var(--color-text-soft);
+}
+
+.card-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-top: auto;
+  padding-top: var(--space-2);
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+}
+
+/* List-style card used for blog & essay index pages: a horizontal
+   "index card" row rather than a grid tile. */
+.list-card {
+  background-color: var(--color-bg-card);
+  border: var(--border-thin);
+  border-radius: var(--radius-md);
+  padding: var(--space-5);
+  box-shadow: var(--shadow-card);
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+.list-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lift);
+}
+
+.list-card + .list-card {
+  margin-top: var(--space-4);
+}
+
+.list-card-title {
+  margin: var(--space-1) 0;
+}
+
+.list-card-title a {
+  text-decoration: none;
+  color: var(--color-text);
+}
+
+.list-card-title a:hover {
+  color: var(--color-accent-dark);
+  text-decoration: underline;
+}
+
+.list-card-summary {
+  color: var(--color-text-soft);
+  margin: var(--space-2) 0 0;
+}
+
+
+/* ==========================================================================
+   7. LONG-FORM WRITING ("prose")
+   ========================================================================== */
+
+.prose {
+  max-width: var(--width-content);
+  font-size: var(--text-lg);
+  line-height: var(--leading-relaxed);
+}
+
+.prose h2 {
+  margin-top: var(--space-7);
+}
+
+.prose h3 {
+  margin-top: var(--space-6);
+}
+
+.prose p {
+  margin-bottom: var(--space-5);
+}
+
+.prose img {
+  margin: var(--space-5) 0;
+  border-radius: var(--radius-md);
+  border: var(--border-thin);
+}
+
+.prose-meta {
+  display: flex;
+  gap: var(--space-4);
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: var(--space-6);
+  color: var(--color-text-faint);
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+}
+
+
+/* ==========================================================================
+   8. PAGE-SPECIFIC COMPONENTS
+   ========================================================================== */
+
+/* ---- Hero (index.html) --------------------------------------------------- */
+.hero {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-6);
+  align-items: center;
+  padding-block: var(--space-7);
+}
+
+@media (min-width: 46rem) {
+  .hero {
+    grid-template-columns: 1.3fr 1fr;
+  }
+}
+
+.hero-eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  color: var(--color-accent-dark);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: var(--space-2);
+}
+
+.hero p.lede {
+  font-size: var(--text-lg);
+  color: var(--color-text-soft);
+  max-width: 34rem;
+}
+
+.hero-actions {
+  display: flex;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+  margin-top: var(--space-5);
+}
+
+/* Profile image placeholder — a simple framed box until a real photo is
+   added. Replace the <img> src in index.html / about.html and this frame
+   will hold a real photo just as well. */
+.profile-frame {
+  border: var(--border-thin);
+  border-radius: var(--radius-md);
+  background-color: var(--color-bg-alt);
+  padding: var(--space-2);
+  box-shadow: var(--shadow-card);
+  transform: rotate(1.5deg);
+  max-width: 20rem;
+  margin-inline: auto;
+}
+
+.profile-frame img {
+  border-radius: var(--radius-sm);
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  width: 100%;
+  background-color: var(--color-surface-line);
+}
+
+.profile-frame figcaption {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--color-text-faint);
+  text-align: center;
+  padding-top: var(--space-2);
+}
+
+/* ---- "Currently" panel ----------------------------------------------------
+   A small, personal, frequently-updated status panel — nostalgic nod to
+   the old "now playing" / "currently" sections of early personal sites. */
+.currently-panel {
+  background-color: var(--color-bg-alt);
+  border: var(--border-thin);
+  border-radius: var(--radius-md);
+  padding: var(--space-5);
+}
+
+.currently-panel h2 {
+  font-size: var(--text-base);
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-text-soft);
+  margin-bottom: var(--space-3);
+}
+
+.currently-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.currently-list li {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.currently-list .label {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--color-text-faint);
+  width: 5.5rem;
+  flex-shrink: 0;
+  text-transform: uppercase;
+  padding-top: 0.2em;
+}
+
+/* Small status dot used alongside the "currently" panel and header. Colour
+   is paired with a text label elsewhere so meaning isn't colour-only. */
+.status-dot {
+  display: inline-block;
+  width: 0.55em;
+  height: 0.55em;
+  border-radius: 50%;
+  background-color: var(--color-sage);
+  margin-right: 0.4em;
+}
+
+/* ---- Timeline (about.html) ------------------------------------------------ */
+.timeline {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-left: var(--border-dashed);
+  margin-left: var(--space-2);
+}
+
+.timeline li {
+  position: relative;
+  padding: 0 0 var(--space-6) var(--space-6);
+}
+
+.timeline li::before {
+  content: "";
+  position: absolute;
+  left: -5px;
+  top: 0.3em;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background-color: var(--color-accent);
+  border: 2px solid var(--color-bg);
+}
+
+.timeline .timeline-date {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--color-text-faint);
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: var(--space-1);
+}
+
+/* ---- CV page --------------------------------------------------------------- */
+.cv-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-6);
+}
+
+.cv-actions {
+  display: flex;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
+.cv-section {
+  margin-bottom: var(--space-6);
+}
+
+.cv-section h2 {
+  font-size: var(--text-lg);
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-bottom: var(--border-thin);
+  padding-bottom: var(--space-2);
+  margin-bottom: var(--space-4);
+}
+
+.cv-entry {
+  display: grid;
+  grid-template-columns: 9rem 1fr;
+  gap: var(--space-4);
+  margin-bottom: var(--space-4);
+}
+
+.cv-entry .cv-date {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--color-text-faint);
+}
+
+.cv-entry h3 {
+  margin: 0 0 0.2em;
+  font-size: var(--text-base);
+  font-family: var(--font-body);
+  font-weight: 700;
+}
+
+.cv-entry .cv-role {
+  color: var(--color-text-soft);
+  font-size: var(--text-sm);
+  margin-bottom: var(--space-2);
+}
+
+@media (max-width: 34rem) {
+  .cv-entry {
+    grid-template-columns: 1fr;
+    gap: var(--space-1);
+  }
+}
+
+/* ---- Contact page ----------------------------------------------------------- */
+.contact-links {
+  list-style: none;
+  padding: 0;
+  margin: var(--space-5) 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.contact-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-lg);
+}
+
+.notice-panel {
+  background-color: var(--color-accent-soft);
+  border: 1px dashed var(--color-accent);
+  border-radius: var(--radius-md);
+  padding: var(--space-4) var(--space-5);
+  font-size: var(--text-sm);
+  color: var(--color-accent-dark);
+  margin: var(--space-5) 0;
+}
+
+.form-field {
+  margin-bottom: var(--space-4);
+}
+
+.form-field label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  margin-bottom: var(--space-2);
+}
+
+.form-field input,
+.form-field textarea {
+  width: 100%;
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  padding: var(--space-3);
+  border: var(--border-thin);
+  border-radius: var(--radius-sm);
+  background-color: var(--color-bg-card);
+  color: var(--color-text);
+}
+
+.form-field textarea {
+  min-height: 8rem;
+  resize: vertical;
+}
+
+
+/* ==========================================================================
+   9. FOOTER
+   ========================================================================== */
+
+.site-footer {
+  border-top: var(--border-thin);
+  margin-top: var(--space-8);
+  padding: var(--space-6) 0;
+  color: var(--color-text-faint);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+}
+
+.site-footer .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+.site-footer a {
+  color: var(--color-text-soft);
+}
+
+.footer-links {
+  list-style: none;
+  display: flex;
+  gap: var(--space-4);
+  padding: 0;
+  margin: 0;
+}
+
+
+/* ==========================================================================
+   10. UTILITIES
+   ========================================================================== */
+
+.text-center { text-align: center; }
+.text-soft { color: var(--color-text-soft); }
+.text-faint { color: var(--color-text-faint); }
+.mt-0 { margin-top: 0; }
+.mb-0 { margin-bottom: 0; }
+
+/* Screen-reader-only utility — for content that should be announced but
+   not visible, e.g. extra context for icon-only links */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* "Skip to content" link — hidden until focused, helps keyboard users
+   bypass the navigation menu */
+.skip-link {
+  position: absolute;
+  left: -999px;
+  top: auto;
+  background-color: var(--color-accent);
+  color: #fff;
+  padding: var(--space-3) var(--space-5);
+  z-index: 100;
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+}
+
+.skip-link:focus {
+  left: var(--space-5);
+  top: var(--space-3);
+}
+
+.divider-dashed {
+  border: none;
+  border-top: var(--border-dashed);
+  margin: var(--space-6) 0;
+}
+
+
+/* ==========================================================================
+   11. REDUCED MOTION & PRINT STYLES
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .card:hover,
+  .list-card:hover {
+    transform: none;
+  }
+}
+
+/* Print styles — used primarily by cv.html's print button, but applied
+   site-wide so any page prints reasonably if someone hits Ctrl/Cmd+P */
+@media print {
+  .site-header,
+  .site-footer,
+  .nav-toggle,
+  .no-print {
+    display: none !important;
+  }
+
+  body {
+    background: #fff;
+    color: #000;
+  }
+
+  a {
+    color: #000;
+    text-decoration: underline;
+  }
+
+  .container,
+  .container-narrow {
+    max-width: 100%;
+    padding: 0;
+  }
+
+  .card,
+  .list-card {
+    box-shadow: none;
+    border: 1px solid #999;
+  }
+}

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Essays — Emma Cza</title>
+  <meta name="description" content="Longer-form essays and writing.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="site-header-inner">
+      <a class="wordmark" href="index.html">Emma Cza<span class="wordmark-dot">.</span></a>
+      <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="primary-navigation">Menu</button>
+      <nav class="main-nav" aria-label="Primary" id="primary-navigation" data-nav-menu>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="essays.html" aria-current="page">Essays</a></li>
+          <li><a href="cv.html">CV</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <section class="container section-tight">
+      <p class="hero-eyebrow">Essays</p>
+      <h1>Longer, slower writing</h1>
+      <p class="text-soft" style="max-width: 38rem;">
+        Pieces that took longer to write and are meant to be read more
+        slowly than a blog post — essays, research write-ups, and
+        anything that needed more than one draft.
+      </p>
+    </section>
+
+    <!-- ==========================================================================
+         HOW TO ADD A NEW ESSAY
+         ==========================================================================
+         Same two-step process as blog posts:
+
+         STEP 1 — Copy essays/example-essay.html to a new file in the
+           essays/ folder, e.g. essays/my-new-essay.html. Update the
+           title, date, topic, and body. Keep the "../" paths as they are.
+
+         STEP 2 — Copy one <div class="list-card"> block below, paste it
+           in (newest at the top), and edit the date, title, href, intro
+           paragraph, and topic tag.
+         ========================================================================== -->
+    <section class="container section">
+      <div class="stack" style="max-width: var(--width-content);">
+
+        <!-- EXAMPLE ESSAY -->
+        <div class="list-card">
+          <span class="date-stamp">14 JANUARY 2026</span>
+          <h2 class="list-card-title"><a href="essays/example-essay.html">What a library card taught me about attention</a></h2>
+          <p class="list-card-summary">
+            A longer piece about borrowing limits, due dates, and why
+            constraints sometimes make it easier to pay attention to a
+            book — or anything else.
+          </p>
+          <ul class="tag-list">
+            <li class="tag">Attention</li>
+            <li class="tag">Reading</li>
+          </ul>
+        </div>
+
+        <!-- Placeholder second entry — replace or delete once you have a
+             real second essay -->
+        <div class="list-card">
+          <span class="date-stamp">2 SEPTEMBER 2025</span>
+          <h2 class="list-card-title"><a href="#">Placeholder: a second example essay</a></h2>
+          <p class="list-card-summary">
+            This card doesn't link anywhere real yet — it's here so the
+            list doesn't look empty.
+          </p>
+          <ul class="tag-list">
+            <li class="tag">Example</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p class="mb-0">© <span id="current-year"></span> YOUR NAME. Built by hand with HTML, CSS &amp; JS.</p>
+      <ul class="footer-links">
+        <li><a href="https://github.com/YOUR-GITHUB-USERNAME">GitHub</a></li>
+        <li><a href="https://www.linkedin.com/in/YOUR-LINKEDIN-USERNAME">LinkedIn</a></li>
+        <li><a href="mailto:YOUR-EMAIL@example.com">Email</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

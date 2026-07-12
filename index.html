@@ -1,31 +1,226 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="keywords" content="emma, czanner, emma czanner, emmacz, emmacza">
-    <title>emmacza</title>
-    <link rel="stylesheet" href="./css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Emma Cza — Home</title>
+  <meta name="description" content="Personal site of Emma Cza — projects, writing, and notes.">
+  <!-- REPLACE: update the description above to describe yourself in one sentence. -->
+  <link rel="stylesheet" href="css/style.css">
+  <!-- Optional favicon — add a file at images/favicon.ico and uncomment:
+  <link rel="icon" href="images/favicon.ico"> -->
 </head>
-
 <body>
-    <main>
-        <div class="title">
-            <h1>emma czanner</h1>
-        </div>
-        <div class="sidenav">
-            <a href="/index.html">home</a>
-            <a href="/projects.html">projects</a>
-            <a href="https://emmaczanner.substack.com">blog</a>
-            <a href="/contact.html">contact</a>
-            <a href="/cv.html">cv</a>
-        </div>
-        <div class="main">
-            <p>Hi! I'm Emma. Welcome to my personal website.</p>
-            <p>Nothing here yet :((</p>
-        </div>
-    </main>
-    <script src="./js/index.js"></script>
-</body>
 
+  <!-- Skip link: lets keyboard users jump past the nav straight to content -->
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <!-- ==========================================================================
+       SHARED HEADER — this exact block appears at the top of every page.
+       If you update the navigation, update it on ALL pages, not just this one.
+       ========================================================================== -->
+  <header class="site-header">
+    <div class="site-header-inner">
+      <a class="wordmark" href="index.html">Emma Cza<span class="wordmark-dot">.</span></a>
+      <!-- REPLACE "Emma Cza" with your own name or handle, everywhere it appears. -->
+
+      <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="primary-navigation">
+        Menu
+      </button>
+
+      <nav class="main-nav" aria-label="Primary" id="primary-navigation" data-nav-menu>
+        <ul>
+          <li><a href="index.html" aria-current="page">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="essays.html">Essays</a></li>
+          <li><a href="cv.html">CV</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+
+    <!-- ==========================================================================
+         HERO SECTION
+         REPLACE: the eyebrow text, heading, bio paragraph, and profile image.
+         ========================================================================== -->
+    <section class="container section hero">
+      <div>
+        <p class="hero-eyebrow">Hello, I'm —</p>
+        <h1>YOUR NAME</h1>
+        <p class="lede">
+          I'm a student and maker who likes taking things apart — code,
+          essays, arguments — to see how they work, then putting them back
+          together a little differently. This site is where I keep the
+          things I build and the things I write.
+        </p>
+        <!-- REPLACE the paragraph above with 2-4 sentences about yourself. -->
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="projects.html">See my projects</a>
+          <a class="btn" href="about.html">More about me</a>
+        </div>
+      </div>
+
+      <!-- Profile image placeholder. Replace images/profile-placeholder.jpg
+           with a real photo of the same approximate aspect ratio (4:5),
+           or leave the placeholder box in place until you have one. -->
+      <figure class="profile-frame">
+        <img src="images/profile-placeholder.jpg" alt="YOUR PROFILE IMAGE — replace this alt text with a real description once you add a photo, e.g. 'Emma smiling outside a library.'">
+        <figcaption>photo, taken sometime</figcaption>
+      </figure>
+    </section>
+
+    <!-- ==========================================================================
+         "CURRENTLY" SECTION
+         A small, informal status panel. Update the list items by hand
+         whenever your situation changes — this is meant to feel personal
+         and slightly diary-like, not automated.
+         ========================================================================== -->
+    <section class="container section-tight">
+      <div class="currently-panel">
+        <h2><span class="status-dot" aria-hidden="true"></span>Currently</h2>
+        <ul class="currently-list">
+          <li><span class="label">Building</span><span>a small tool to track my reading list</span></li>
+          <li><span class="label">Reading</span><span>a book I'll probably write an essay about</span></li>
+          <li><span class="label">Learning</span><span>a bit more about how the web actually works</span></li>
+        </ul>
+        <p class="text-faint" style="margin-top: var(--space-3); margin-bottom: 0;">
+          Last touched this list on <span data-last-updated>a recent date</span>.
+        </p>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SELECTED PROJECTS
+         Shows 3 example project cards. Add or remove <article class="card">
+         blocks to change how many appear. Full list lives on projects.html —
+         see the comments there for how to add a new project.
+         ========================================================================== -->
+    <section class="container section">
+      <div class="section-heading">
+        <h2>Selected projects</h2>
+        <a class="see-all" href="projects.html">All projects →</a>
+      </div>
+
+      <div class="grid grid-3">
+        <article class="card">
+          <div class="card-header">
+            <h3>Tidepool</h3>
+            <span class="stamp stamp-progress">In progress</span>
+          </div>
+          <p>A small journaling app that only lets you write one paragraph a day. Built to fight my own habit of over-editing.</p>
+          <ul class="tag-list">
+            <li class="tag">JavaScript</li>
+            <li class="tag">Local Storage</li>
+          </ul>
+          <div class="card-links">
+            <a href="projects.html">Details →</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-header">
+            <h3>Field Notes</h3>
+            <span class="stamp stamp-active">Active</span>
+          </div>
+          <p>A growing archive of short observations from walks around my neighbourhood, sorted by season.</p>
+          <ul class="tag-list">
+            <li class="tag">Writing</li>
+            <li class="tag">Photography</li>
+          </ul>
+          <div class="card-links">
+            <a href="projects.html">Details →</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-header">
+            <h3>Library Card Catalog</h3>
+            <span class="stamp stamp-archived">Archived</span>
+          </div>
+          <p>A school research project that turned into a small database of every book I read in 2024, styled like an old card catalog.</p>
+          <ul class="tag-list">
+            <li class="tag">Python</li>
+            <li class="tag">SQLite</li>
+          </ul>
+          <div class="card-links">
+            <a href="projects.html">Details →</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         LATEST WRITING
+         Pulls together the most recent blog post and essay as examples.
+         Update these two cards by hand whenever you publish something new,
+         or remove this section if you'd rather people just visit blog.html
+         and essays.html directly.
+         ========================================================================== -->
+    <section class="container section section-alt">
+      <div class="section-heading">
+        <h2>Latest writing</h2>
+      </div>
+
+      <div class="grid grid-2">
+        <div class="list-card">
+          <span class="date-stamp">BLOG · 3 MARCH 2026</span>
+          <h3 class="list-card-title"><a href="posts/example-post.html">On keeping a slower internet</a></h3>
+          <p class="list-card-summary">Some notes on why I wanted a personal site that isn't trying to sell anything, including to me.</p>
+          <ul class="tag-list">
+            <li class="tag">Blogging</li>
+            <li class="tag">Web</li>
+          </ul>
+        </div>
+
+        <div class="list-card">
+          <span class="date-stamp">ESSAY · 14 JANUARY 2026</span>
+          <h3 class="list-card-title"><a href="essays/example-essay.html">What a library card taught me about attention</a></h3>
+          <p class="list-card-summary">A longer piece about borrowing limits, due dates, and why constraints sometimes make it easier to pay attention.</p>
+          <ul class="tag-list">
+            <li class="tag">Essay</li>
+            <li class="tag">Attention</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         LINKS / CONTACT
+         REPLACE every href below with your real profile URLs and email.
+         ========================================================================== -->
+    <section class="container section text-center">
+      <h2>Find me elsewhere</h2>
+      <p class="text-soft">I'm most reachable by email, and occasionally elsewhere.</p>
+      <ul class="contact-links" style="align-items: center;">
+        <li><a href="https://github.com/YOUR-GITHUB-USERNAME">GitHub — YOUR GITHUB URL</a></li>
+        <li><a href="https://www.linkedin.com/in/YOUR-LINKEDIN-USERNAME">LinkedIn — YOUR LINKEDIN URL</a></li>
+        <li><a href="mailto:YOUR-EMAIL@example.com">Email — YOUR EMAIL</a></li>
+      </ul>
+      <a class="btn" href="contact.html">Go to contact page</a>
+    </section>
+
+  </main>
+
+  <!-- ==========================================================================
+       SHARED FOOTER — same block on every page. Update links here if you
+       add or rename pages.
+       ========================================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <p class="mb-0">© <span id="current-year"></span> YOUR NAME. Built by hand with HTML, CSS &amp; JS.</p>
+      <ul class="footer-links">
+        <li><a href="https://github.com/YOUR-GITHUB-USERNAME">GitHub</a></li>
+        <li><a href="https://www.linkedin.com/in/YOUR-LINKEDIN-USERNAME">LinkedIn</a></li>
+        <li><a href="mailto:YOUR-EMAIL@example.com">Email</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
 </html>

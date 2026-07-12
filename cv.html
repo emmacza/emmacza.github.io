@@ -1,29 +1,190 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>emmacza</title>
-    <link rel="stylesheet" href=".//css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CV — Emma Cza</title>
+  <meta name="description" content="Education, experience, projects, and skills.">
+  <link rel="stylesheet" href="css/style.css">
 </head>
-
 <body>
-    <div class="title">
-        <h1>emma czanner</h1>
-    </div>
-    <main>
-        <div class="sidenav">
-             <a href="/index.html">home</a>
-            <a href="/projects.html">projects</a>
-            <a href="https://emmaczanner.substack.com">blog</a>
-            <a href="/contact.html">contact</a>
-            <a href="/cv.html">cv</a>
-        </div>
-        <div class="main">
-            <p>Coming soon!</p>
-        </div>
-    </main>
-    <script src="./js/index.js"></script>
-</body>
 
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="site-header-inner">
+      <a class="wordmark" href="index.html">Emma Cza<span class="wordmark-dot">.</span></a>
+      <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="primary-navigation">Menu</button>
+      <nav class="main-nav" aria-label="Primary" id="primary-navigation" data-nav-menu>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="essays.html">Essays</a></li>
+          <li><a href="cv.html" aria-current="page">CV</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <section class="container-narrow section">
+
+      <div class="cv-header">
+        <div>
+          <p class="hero-eyebrow">CV</p>
+          <h1 class="mb-0">YOUR NAME</h1>
+          <p class="text-soft">YOUR EMAIL · YOUR CITY / REGION · <a href="https://github.com/YOUR-GITHUB-USERNAME">GitHub</a></p>
+        </div>
+
+        <!-- ==========================================================================
+             CV ACTIONS — print button and PDF download.
+             The print button uses main.js (data-print-cv) combined with the
+             print styles in style.css, so "print" also works as "save as
+             PDF" in most browsers.
+             The download link below is a placeholder — see the comment
+             underneath for how to add a real PDF.
+             ========================================================================== -->
+        <div class="cv-actions no-print">
+          <button type="button" class="btn btn-primary" data-print-cv>Print this page</button>
+          <a class="btn" href="cv.pdf" download>Download PDF</a>
+        </div>
+      </div>
+
+      <!--
+        HOW TO ADD A REAL PDF CV
+        ------------------------
+        1. Export or save your CV as a PDF file named cv.pdf.
+        2. Place it in the same folder as this file (the root of the site).
+        3. The "Download PDF" button above already points to cv.pdf, so it
+           will start working automatically once the file exists — no
+           other changes needed.
+        Until you add a real file, that button will lead to a "file not
+        found" page, so either add the PDF soon or remove the button.
+      -->
+
+      <p class="text-faint no-print" style="margin-top: var(--space-2);">
+        Prefer a PDF? Use the buttons above. This page is also formatted
+        to print cleanly on its own.
+      </p>
+
+      <hr class="divider-dashed">
+
+      <!-- ==========================================================================
+           EDUCATION
+           Copy a .cv-entry block to add another entry.
+           ========================================================================== -->
+      <section class="cv-section">
+        <h2>Education</h2>
+        <div class="cv-entry">
+          <span class="cv-date">2023 – present</span>
+          <div>
+            <h3>YOUR SCHOOL OR UNIVERSITY</h3>
+            <p class="cv-role">YOUR COURSE / PROGRAMME OF STUDY</p>
+            <p class="text-soft mb-0">A line or two about relevant coursework, focus areas, or achievements.</p>
+          </div>
+        </div>
+        <div class="cv-entry">
+          <span class="cv-date">2019 – 2023</span>
+          <div>
+            <h3>PLACEHOLDER SECONDARY SCHOOL</h3>
+            <p class="cv-role">Relevant subjects or qualifications</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================================================
+           EXPERIENCE
+           ========================================================================== -->
+      <section class="cv-section">
+        <h2>Experience</h2>
+        <div class="cv-entry">
+          <span class="cv-date">Summer 2025</span>
+          <div>
+            <h3>PLACEHOLDER ROLE OR INTERNSHIP</h3>
+            <p class="cv-role">Organisation name</p>
+            <p class="text-soft mb-0">
+              A short description of what you did and what you learned —
+              two to three sentences is plenty.
+            </p>
+          </div>
+        </div>
+        <div class="cv-entry">
+          <span class="cv-date">2024</span>
+          <div>
+            <h3>PLACEHOLDER — volunteer role, club, or part-time job</h3>
+            <p class="cv-role">Organisation name</p>
+            <p class="text-soft mb-0">Short description here.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================================================
+           PROJECTS — a short version of what's on projects.html
+           ========================================================================== -->
+      <section class="cv-section">
+        <h2>Projects</h2>
+        <div class="cv-entry">
+          <span class="cv-date">2026</span>
+          <div>
+            <h3>Tidepool</h3>
+            <p class="text-soft mb-0">A minimal daily journaling app built with vanilla JavaScript.</p>
+          </div>
+        </div>
+        <div class="cv-entry">
+          <span class="cv-date">2024</span>
+          <div>
+            <h3>Library Card Catalog</h3>
+            <p class="text-soft mb-0">A small SQLite database of books read, with a library-card-styled interface.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================================================
+           SKILLS
+           ========================================================================== -->
+      <section class="cv-section">
+        <h2>Skills</h2>
+        <ul class="tag-list">
+          <li class="tag">HTML &amp; CSS</li>
+          <li class="tag">JavaScript</li>
+          <li class="tag">Python</li>
+          <li class="tag">Research &amp; writing</li>
+          <li class="tag">YOUR SKILL</li>
+          <li class="tag">YOUR SKILL</li>
+        </ul>
+      </section>
+
+      <!-- ==========================================================================
+           AWARDS & ACTIVITIES
+           ========================================================================== -->
+      <section class="cv-section">
+        <h2>Awards &amp; activities</h2>
+        <div class="cv-entry">
+          <span class="cv-date">2025</span>
+          <div>
+            <h3>PLACEHOLDER AWARD OR ACTIVITY</h3>
+            <p class="text-soft mb-0">Short description of the award, competition, or activity.</p>
+          </div>
+        </div>
+      </section>
+
+    </section>
+  </main>
+
+  <footer class="site-footer no-print">
+    <div class="container">
+      <p class="mb-0">© <span id="current-year"></span> YOUR NAME. Built by hand with HTML, CSS &amp; JS.</p>
+      <ul class="footer-links">
+        <li><a href="https://github.com/YOUR-GITHUB-USERNAME">GitHub</a></li>
+        <li><a href="https://www.linkedin.com/in/YOUR-LINKEDIN-USERNAME">LinkedIn</a></li>
+        <li><a href="mailto:YOUR-EMAIL@example.com">Email</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
 </html>
