@@ -438,12 +438,17 @@ code, pre {
   .main-nav[data-open="false"] {
     display: none;
   }
-}
 
-/* Only hide the mobile nav via JS if JS actually ran. This keeps navigation
-   fully usable (all links visible, stacked) if JavaScript is disabled. */
-.js-enabled .main-nav[data-open="false"] {
-  display: none;
+  /* Only hide the mobile nav via JS if JS actually ran. This keeps
+     navigation fully usable (all links visible, stacked) if JavaScript
+     is disabled. IMPORTANT: this rule must stay inside this same
+     max-width media query — it should only ever apply on small screens.
+     If it leaked out to apply at all screen widths, it would hide the
+     desktop nav entirely, since main.js always sets data-open="false"
+     on page load regardless of screen size. */
+  .js-enabled .main-nav[data-open="false"] {
+    display: none;
+  }
 }
 
 
