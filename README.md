@@ -1,7 +1,6 @@
 # emmacza.github.io
-
-This is the source code for my personal website — built with plain HTML,
-CSS, and JavaScript, no frameworks or build tools.
+---
+This is the source code for my personal website — built with plain HTML, CSS, and JavaScript.
 ---
 
 ## Directory
@@ -28,9 +27,3 @@ CSS, and JavaScript, no frameworks or build tools.
 │   └── README.md                 Notes on what images the site expects.
 └── README.md                       This file.
 ```
-
-That's everything needed to run, publish, and maintain this site. Most
-of the day-to-day editing — adding a project, a post, or an essay — comes
-down to copying an existing block of HTML and changing the text inside
-it, which is intentional: the goal was a site that's easy to keep adding
-to over time, not just a one-time template.
