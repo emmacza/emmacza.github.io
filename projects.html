@@ -18,11 +18,11 @@
       <nav class="main-nav" aria-label="Primary" id="primary-navigation" data-nav-menu>
         <ul>
           <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About</a></li>
+          <!-- <li><a href="about.html">About</a></li> -->
           <li><a href="projects.html" aria-current="page">Projects</a></li>
-          <li><a href="blog.html">Blog</a></li>
+         <!-- <li><a href="blog.html">Blog</a></li>
           <li><a href="essays.html">Essays</a></li>
-          <li><a href="cv.html">CV</a></li>
+          <li><a href="cv.html">CV</a></li> -->
           <li><a href="contact.html">Contact</a></li>
         </ul>
       </nav>
@@ -35,59 +35,136 @@
       <h1>Things I've built</h1>
       <p class="text-soft" style="max-width: 38rem;">
         A mix of personal, academic, technical, and creative projects —
-        some finished, some very much not. "Status" is honest: things
+        some finished, some in progress. "Status" is honest: things
         marked archived aren't maintained anymore, but I've kept them up
         because I still like them.
       </p>
     </section>
 
     <!-- ==========================================================================
-         HOW TO ADD A NEW PROJECT
-         ==========================================================================
-         Copy one whole <article class="card"> block (including the opening
-         and closing <article> tags) and paste it inside the <div class="grid
-         grid-3"> below. Then edit:
-
-           - the <h3> title
-           - the <span class="stamp ..."> status. Use one of:
-               stamp-active     (currently maintained / in use)
-               stamp-progress   (still being built)
-               stamp-archived   (finished or no longer maintained)
-           - the description paragraph
-           - the <li class="tag"> items (technologies or topics — add or
-             remove as many <li> as you need)
-           - the links in .card-links — use whichever of these apply, and
-             delete the ones that don't:
-               <a href="YOUR GITHUB URL">Code</a>
-               <a href="YOUR LIVE DEMO URL">Live demo</a>
-               <a href="YOUR WRITE-UP URL">Write-up</a>
-
-         There's no limit to how many project cards you can add — the grid
-         will wrap onto new rows automatically.
+         PROJECTS
          ========================================================================== -->
     <section class="container section">
       <div class="grid grid-3">
 
-        <!-- EXAMPLE PROJECT 1 -->
-         <!--
+        <!-- Name of Project -->
+        <!--
         <article class="card">
           <div class="card-header">
-            <h3>Placeholder</h3>
-            <span class="stamp stamp-progress">In progress</span>
+            <h3>Name of Project</h3>
+            <span class="stamp stamp-progress">Status: 
+              stamp-active     (currently maintained / in use)
+              stamp-progress   (still being built)
+              stamp-archived   (finished or no longer maintained)</span>
           </div>
           <p>
-            Placeholder
+            Description of the project - what it is, why I started it, how it's going.
           </p>
           <ul class="tag-list">
-            <li class="tag">Placeholder</li>
-            <li class="tag">Placeholder</li>
-            <li class="tag">Placeholder</li>
+            <li class="tag">Tag: technology/topic/theme</li>
+            <li class="tag">Tag: technology/topic/theme</li>
+            <li class="tag">Tag: technology/topic/theme</li>
           </ul>
           <div class="card-links">
-            <a href="#">Placeholder</a>
+            <a href="#">Link to project</a>
           </div>
         </article>
       -->
+
+      <!-- AuroraGate Expense Categorization -->
+        <article class="card">
+          <div class="card-header">
+            <h3>AuroraGate Expense Categorization</h3>
+            <span class="stamp stamp-active">Active</span>
+          </div>
+          <p>
+            A Kaggle competition entry that classifies bank transactions into spending categories
+            (Groceries, Transportation, Shopping, etc.) from raw fields like the merchant description,
+            amount, and date. The pipeline cleans and vectorises transaction descriptions with character
+            n-gram TF-IDF, engineers features from the date and amount, and feeds everything into a
+            LightGBM classifier.
+          </p>
+          <p>
+            Cross-validated with stratified 4-fold CV, it lands around 91% accuracy.
+            Currently sitting 3rd on the competition leaderboard.
+          </p>
+          <ul class="tag-list">
+            <li class="tag">ML</li>
+            <li class="tag">NLP / text classification</li>
+            <li class="tag">Kaggle</li>
+            <li class="tag">Personal</li>
+          </ul>
+          <div class="card-links">
+            <a href="https://www.kaggle.com/competitions/aurora-gate-expense-categorization-challenge">Competition page</a>
+            <a href="https://www.kaggle.com/code/emmaczanner/expense-categorization">My entry</a>
+          </div>
+        </article>
+
+        <!-- Haunted Helper -->
+        <article class="card">
+          <div class="card-header">
+            <h3>Haunted Helper</h3>
+            <span class="stamp stamp-archived">Archived</span>
+          </div>
+          <p>
+            A 2D puzzle-platformer made for GMTK Game Jam 2023 with a team of two.
+            You play as a ghost possessing elements of the environment to help an adventurer reach the
+            end of each level. I worked on game design and level design, as well as art and music, while
+            my teammate handled mostly level design and programming. Built in GameMaker and playable free in-browser.
+          </p>
+          <ul class="tag-list">
+            <li class="tag">game jam</li>
+            <li class="tag">pixel art</li>
+            <li class="tag">game design</li>
+            <li class="tag">team</li>
+          </ul>
+          <div class="card-links">
+            <a href="https://mister-mippy.itch.io/haunted-helper">Link to game</a>
+          </div>
+        </article>
+
+        <!-- Container Chameleon -->
+        <article class="card">
+          <div class="card-header">
+            <h3>Container Chameleon</h3>
+            <span class="stamp stamp-archived">archived</span>
+          </div>
+          <p>
+            A shipping optimisation engine built with a team of six at Oxford.
+            I helped design a Python simulated-annealing optimiser that solves container routing problems
+            under real-world constraints, cutting scheduling time from over an hour down to under a
+            minute while keeping solutions near-optimal.
+          </p>
+          <p>
+            Worked as part of a 6-person team using GitHub workflows, weekly sprints, and
+            stakeholder-driven specifications.
+          </p>
+          <ul class="tag-list">
+            <li class="tag">optimisation</li>
+            <li class="tag">simulated-annealing</li>
+            <li class="tag">coursework</li>
+            <li class="tag">team</li>
+          </ul>
+        </article>
+
+        <!-- Wildflower Identification App -->
+        <article class="card">
+          <div class="card-header">
+            <h3>Wildflower Identification App</h3>
+            <span class="stamp stamp-archived">archived</span>
+          </div>
+          <p>
+            My A-Level project: a Java and SQL application for storing and searching for wildflower images.
+            I designed the database schema and UI from the ground up with full documentation, which is
+            where I first got hands-on with database and API-driven application development.
+          </p>
+          <ul class="tag-list">
+            <li class="tag">Java</li>
+            <li class="tag">SQL</li>
+            <li class="tag">databases</li>
+            <li class="tag">coursework</li>
+          </ul>
+        </article>
 
       </div>
     </section>
