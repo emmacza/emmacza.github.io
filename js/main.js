@@ -82,24 +82,4 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-
-  /* ==========================================================================
-     4. OPTIONAL — "CURRENTLY" TIMESTAMP
-     ==========================================================================
-     Purely decorative: if an element with [data-last-updated] exists (used
-     in the "currently" panel on index.html), this fills it with today's
-     date so the panel visibly looks freshly maintained. Update the actual
-     TEXT of the currently panel by hand in index.html whenever your status
-     changes — this script only stamps the date, it does not know what
-     you're "currently" doing.
-
-     Delete this whole block if you'd rather not have it.
-     ========================================================================== */
-  var lastUpdatedEl = document.querySelector("[data-last-updated]");
-  if (lastUpdatedEl) {
-    var today = new Date();
-    var options = { year: "numeric", month: "short", day: "numeric" };
-    lastUpdatedEl.textContent = today.toLocaleDateString(undefined, options);
-  }
-
 });
