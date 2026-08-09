@@ -1,14 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>emmacza — Home</title>
-  <meta name="description" content="Personal site of Emma Czanner — projects, writing, and notes.">
+  <title>home — emmacza</title>
+  <meta name="description" content="Emma Czanner's Internet Corner">
   <link rel="stylesheet" href="css/style.css">
-  <!-- Optional favicon — add a file at images/favicon.ico and uncomment:
-  <link rel="icon" href="images/favicon.ico"> -->
+  <!-- Favicons -->
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+  <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+  <link rel="manifest" href="images/site.webmanifest">
 </head>
+
 <body>
 
   <!-- Skip link: lets keyboard users jump past the nav straight to content -->
@@ -62,8 +69,7 @@
       </div>
 
       <!-- Profile image placeholder. Replace images/profile-placeholder.jpg
-           with a real photo of the same approximate aspect ratio (4:5),
-           or leave the placeholder box in place until you have one. -->
+           with a real photo of the same approximate aspect ratio (4:5). -->
       <!--
       <figure class="profile-frame">
         <img src="images/profile-placeholder.jpg" alt="Placeholder for an image">
@@ -74,9 +80,7 @@
 
     <!-- ==========================================================================
          "CURRENTLY" SECTION
-         A small, informal status panel. Update the list items by hand
-         whenever your situation changes — this is meant to feel personal
-         and slightly diary-like, not automated.
+         A small, informal status panel. Personal and slightly diary-like.
          ========================================================================== -->
     <section class="container section-tight">
       <div class="currently-panel">
@@ -103,66 +107,66 @@
         <a class="see-all" href="projects.html">All projects →</a>
       </div>
 
-           <!-- AuroraGate Expense Categorization -->
-        <article class="card">
-          <div class="card-header">
-            <h3>AuroraGate Expense Categorization</h3>
-            <span class="stamp stamp-active">Active</span>
-          </div>
-          <p>
-            A Kaggle competition entry that classifies bank transactions into spending categories
-            (Groceries, Transportation, Shopping, etc.) from raw fields like the merchant description,
-            amount, and date. The pipeline cleans and vectorises transaction descriptions with character
-            n-gram TF-IDF, engineers features from the date and amount, and feeds everything into a
-            LightGBM classifier.
-          </p>
-          <p>
-            Cross-validated with stratified 4-fold CV, it lands around 91% accuracy.
-          </p>
-          <ul class="tag-list">
-            <li class="tag">ML</li>
-            <li class="tag">NLP / text classification</li>
-            <li class="tag">Kaggle</li>
-            <li class="tag">Personal</li>
-          </ul>
-          <div class="card-links">
-            <a href="https://www.kaggle.com/competitions/aurora-gate-expense-categorization-challenge">Competition page</a>
-            <a href="https://www.kaggle.com/code/emmaczanner/expense-categorization">My entry</a>
-          </div>
-        </article>
+      <!-- AuroraGate Expense Categorization -->
+      <article class="card">
+        <div class="card-header">
+          <h3>AuroraGate Expense Categorization</h3>
+          <span class="stamp stamp-active">Active</span>
+        </div>
+        <p>
+          A Kaggle competition entry that classifies bank transactions into spending categories
+          (Groceries, Transportation, Shopping, etc.) from raw fields like the merchant description,
+          amount, and date. The pipeline cleans and vectorises transaction descriptions with character
+          n-gram TF-IDF, engineers features from the date and amount, and feeds everything into a
+          LightGBM classifier.
+        </p>
+        <p>
+          Cross-validated with stratified 4-fold CV. Final leaderboard results pending.
+        </p>
+        <ul class="tag-list">
+          <li class="tag">ML</li>
+          <li class="tag">NLP / text classification</li>
+          <li class="tag">Kaggle</li>
+          <li class="tag">Exploratory data analysis</li>
+          <li class="tag">Categorisation</li>
+        </ul>
+        <div class="card-links">
+          <a href="https://www.kaggle.com/competitions/aurora-gate-expense-categorization-challenge">Competition
+            page</a>
+          <a href="https://www.kaggle.com/code/emmaczanner/expense-categorization">Exploratory Data Analysis</a>
+        </div>
+      </article>
 
-        <!-- Container Chameleon -->
-        <article class="card">
-          <div class="card-header">
-            <h3>Container Chameleon</h3>
-            <span class="stamp stamp-archived">archived</span>
-          </div>
-          <p>
-            A shipping optimisation engine built with a team of six at Oxford.
-            I helped design a Python simulated-annealing optimiser that solves container routing problems
-            under real-world constraints, cutting scheduling time from over an hour down to under a
-            minute while keeping solutions near-optimal.
-          </p>
-          <p>
-            Worked as part of a 6-person team using GitHub workflows, weekly sprints, and
-            stakeholder-driven specifications.
-          </p>
-          <ul class="tag-list">
-            <li class="tag">optimisation</li>
-            <li class="tag">simulated-annealing</li>
-            <li class="tag">coursework</li>
-            <li class="tag">team</li>
-          </ul>
-        </article>
+      <!-- Container Chameleon -->
+      <article class="card">
+        <div class="card-header">
+          <h3>Container Chameleon</h3>
+          <span class="stamp stamp-archived">archived</span>
+        </div>
+        <p>
+          A shipping optimisation engine built with a team of six at Oxford.
+          I helped design a Python simulated-annealing optimiser that solves container routing problems
+          under real-world constraints, cutting scheduling time from over an hour down to under a
+          minute while keeping solutions near-optimal.
+        </p>
+        <p>
+          Worked as part of a 6-person team using GitHub workflows, weekly sprints, and
+          stakeholder-driven specifications.
+        </p>
+        <ul class="tag-list">
+          <li class="tag">optimisation</li>
+          <li class="tag">simulated-annealing</li>
+          <li class="tag">coursework</li>
+          <li class="tag">team</li>
+        </ul>
+      </article>
 
     </section>
 
     <!-- ==========================================================================
          LATEST WRITING
          Pulls together the most recent blog post and essay as examples.
-         Update these two cards by hand whenever you publish something new,
-         or remove this section if you'd rather people just visit blog.html
-         and essays.html directly.
+         Update these two cards by hand whenever you publish something new.
          ========================================================================== -->
 
     <!--
@@ -170,7 +174,6 @@
       <div class="section-heading">
         <h2>Latest writing</h2>
       </div>
-
       
       <div class="grid grid-2">
         <div class="list-card">
@@ -189,7 +192,6 @@
 
     <!-- ==========================================================================
          LINKS / CONTACT
-         REPLACE every href below with your real profile URLs and email.
          ========================================================================== -->
     <section class="container section text-center">
       <h2>Find me elsewhere</h2>
@@ -219,4 +221,5 @@
 
   <script src="js/main.js"></script>
 </body>
+
 </html>
